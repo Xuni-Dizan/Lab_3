@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Quản Lý Tài Liệu Cá Nhân</title>
+</head>
+<body>
+    <header>
+        <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/30/hinh-tron-dep_111539274.jpg" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chính</a></li>
+                <li><a href="forum.html">Diễn đàn</a></li>
+                <li><a href="manage.html">Quản lý tài liệu</a></li>
+                <li><a href="connect.html">Kết nối</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <div class="search-container">
+                <input type="text" id="folderSearch" placeholder="Tìm kiếm thư mục...">
+            </div>
+            <div id="folder-list">
+                <h2>Thư Mục</h2>
+                <div class="folder" onclick="showDocuments('Thư Mục 1')">Thư Mục 1</div>
+                <div class="folder" onclick="showDocuments('Thư Mục 2')">Thư Mục 2</div>
+                <div class="folder" onclick="showDocuments('Thư Mục 3')">Thư Mục 3</div>
+                <div class="add-folder" onclick="addFolder()">+</div>
+            </div>
+            <div class="action-buttons">
+                <button onclick="showUploadForm()">Tải lên tài liệu</button>
+                <button onclick="viewDeletedDocuments()">Xem tài liệu đã xóa</button>
+            </div>
+        </aside>
+
+        <section id="content">
+            <h2>Danh Sách Tài Liệu</h2>
+            <div class="documents" id="documentsList">
+                <!-- Tài liệu sẽ được hiển thị tại đây -->
+            </div>
+            <div class="view-toggle">
+                <button onclick="toggleViewMode('list')">Chế độ danh sách</button>
+                <button onclick="toggleViewMode('grid')">Chế độ lưới</button>
+            </div>
+            <div class="sort-options">
+                <button onclick="sortDocuments('title')">Sắp xếp theo tiêu đề</button>
+                <button onclick="sortDocuments('date')">Sắp xếp theo ngày tải lên</button>
+            </div>
+            <div class="documents" id="documentsList"></div>
+            <div id="uploadForm" class="upload-form hidden">
+                <h3>Tải Tài Liệu Mới</h3>
+                <form id="uploadDocumentForm">
+                    <input type="text" id="docTitle" placeholder="Tiêu đề" required>
+                    <textarea id="docDescription" placeholder="Mô tả"></textarea>
+                    <input type="file" id="docFile" required>
+                    <div id="dropZone">Kéo và thả tài liệu vào đây</div>
+                    <button type="submit">Tải lên</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="js/manage.js"></script>
+</body>
+</html>
+

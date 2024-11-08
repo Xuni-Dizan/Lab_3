@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Diễn Đàn Thảo Luận</title>
+</head>
+<body>
+    <header>
+        <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/30/hinh-tron-dep_111539274.jpg" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chính</a></li>
+                <li><a href="forum.html">Diễn đàn</a></li>
+                <li><a href="manage.html">Quản lý tài liệu</a></li>
+                <li><a href="connect.html">Kết nối</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Đặt Câu Hỏi Mới</h2>
+            <form id="questionForm">
+                <!-- Nút xóa câu hỏi -->
+                <button class="delete-question"><i class="fas fa-times"></i></button>
+                <input type="text" id="questionTitle" placeholder="Tiêu đề câu hỏi" required>
+                <textarea id="questionContent" placeholder="Nội dung câu hỏi"></textarea>
+                <button type="submit">Gửi Câu Hỏi</button>
+            </form>
+        </section>
+        
+        <section id="question-list">
+            <h2>Các Câu Hỏi Đã Đăng</h2>
+            <div class="cards" id="questions">
+                <!-- Các câu hỏi và bình luận sẽ được hiển thị tại đây -->
+            </div>
+        </section>
+    </main>
+
+    <script src="js/forum.js"></script>
+</body>
+</html>

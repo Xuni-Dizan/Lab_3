@@ -1,0 +1,609 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0f2e9;
+    padding: 15px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #4da550;
+}
+
+main {
+    padding: 20px;
+}
+
+.form-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input, textarea, button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#document-list {
+    margin-top: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.card:hover {
+    background: #f0f0f0;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+aside {
+    width: 25%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+#folder-list {
+    margin-bottom: 30px;
+}
+
+.folder {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.folder:hover {
+    background-color: #e0f2e9;
+}
+
+.add-folder {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-folder:hover {
+    background-color: #45a049;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    background-color: #45a049;
+}
+
+#content {
+    width: 75%;
+    padding: 20px;
+}
+
+/* Style cho thẻ tài liệu */
+.document-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px; /* Đặt kích thước cố định nhỏ gọn */
+}
+
+/* Hiệu ứng hover cho thẻ */
+.document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề tài liệu */
+.document-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Mô tả ngắn */
+.document-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Để phần mô tả có thể linh hoạt */
+}
+
+/* Nút tải về và chỉnh sửa */
+.document-card a, .document-card button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.document-card a:hover, .document-card button:hover {
+    background-color: #45a049;
+}
+
+/* Tạo layout lưới cho các thẻ */
+#documents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cấu trúc lưới */
+    grid-gap: 15px; /* Khoảng cách giữa các thẻ */
+}
+
+/* Ẩn thông báo khi không sử dụng */
+.notification.hidden {
+    display: none;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.upload-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.upload-form input, 
+.upload-form textarea {
+    width: calc(100% - 20px);
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.upload-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-form button:hover {
+    background-color: #45a049;
+}
+
+.connect-page {
+    background-color: #f7f9fc;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #b2e0d4;
+    padding: 15px;
+}
+
+.navbar img {
+    width: 50px;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+
+.navbar img:hover {
+    transform: rotate(5deg);
+}
+
+.navbar h1 {
+    color: #333;
+    margin: 0 20px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li {
+    margin-left: 20px;
+}
+
+.navbar nav ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+    color: #ff6b6b;
+}
+
+.search-box {
+    margin-left: auto;
+}
+
+.search-box input {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.user-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    width: 240px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-card img {
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-card h3 {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.user-card p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.connect-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.connect-button:hover {
+    background-color: #ff4a4a;
+    transform: scale(1.05);
+}
+
+.profile-info {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info img {
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2 {
+    margin: 10px 0;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+.chat-window {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-window input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.group-list {
+    margin-top: 30px;
+}
+
+.group-card {
+    background: #e0f7fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.group-card:hover {
+    transform: translateY(-5px);
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Thẻ câu hỏi */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative; /* Để định vị nút xóa câu hỏi */
+}
+
+/* Nút xóa câu hỏi */
+.delete-question {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-question:hover {
+    color: darkred;
+}
+
+/* Thẻ bình luận */
+.comment-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative; /* Để định vị nút xóa bình luận */
+    display: flex;
+    align-items: center;
+}
+
+/* Nút xóa bình luận */
+.delete-comment {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.delete-comment:hover {
+    color: white;;
+}
+
+/* Thẻ bình luận đẹp hơn */
+.comment-card p {
+    margin: 0;
+    padding-left: 40px; /* Để tránh nút xóa chèn lên phần văn bản */
+    font-size: 0.95em;
+}
+
+
+/* Phần form bình luận */
+.comment-form {
+    margin-top: 10px;
+    display: flex;
+}
+
+.comment-form input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.comment-form button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #45a049;
+}
+
+/* Danh sách bình luận */
+.comments-list {
+    margin-top: 10px;
+}
+/* Thẻ câu hỏi */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    position: relative; /* Để định vị nút xóa câu hỏi */
+}
+
+/* Nút xóa câu hỏi */
+.delete-question {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    
+}
+
+.delete-question:hover {
+    color: white;
+    background-color: #bbadad;
+}
+
+/* Nội dung câu hỏi */
+.card h3, .card p {
+    margin: 0;
+}
+/* Nút xóa câu hỏi với biểu tượng */
+.delete-question i, .delete-comment i {
+    color: #ff4d4d;
+}
+
+.delete-question:hover i, .delete-comment:hover i {
+    color: white;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Trang Chính</title>
+</head>
+<body>
+    <header>
+        <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/30/hinh-tron-dep_111539274.jpg" alt="Logo" class="logo">
+        <h1>Trang Web Trao Đổi Tài Liệu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chính</a></li>
+                <li><a href="forum.html">Diễn đàn</a></li>
+                <li><a href="manage.html">Quản lý tài liệu</a></li>
+                <li><a href="connect.html">Kết nối</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="upload-form">
+            <h2>Đăng Tải Tài Liệu</h2>
+            <form id="documentForm">
+                <input type="text" id="title" placeholder="Tiêu đề" required>
+                <textarea id="description" placeholder="Mô tả" required></textarea>
+                <input type="file" id="file" accept=".pdf, .doc, .docx" required>
+                <div id="dropZone">Kéo và thả tài liệu vào đây</div>
+                <button type="submit">Đăng tải</button>
+            </form>
+        </section>
+
+        <section class="document-list">
+            <h2>Danh Sách Tài Liệu</h2>
+            <div id="documents"></div>
+        </section>
+        <div id="notification" class="notification hidden"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Trang Web Trao Đổi Tài Liệu. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+

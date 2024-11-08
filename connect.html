@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Trang Kết Nối</title>
+</head>
+<body>
+    <div class="connect-page">
+        <header class="navbar">
+            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/30/hinh-tron-dep_111539274.jpg" alt="Logo">
+            <h1>Trang Kết Nối</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang chính</a></li>
+                    <li><a href="forum.html">Diễn đàn</a></li>
+                    <li><a href="manage.html">Quản lý tài liệu</a></li>
+                    <li><a href="connect.html">Kết nối</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" id="searchName" placeholder="Tìm kiếm người dùng...">
+                <button onclick="filterUsers()">Tìm kiếm</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="user-list">
+                <div class="user-card">
+                    <img src="images/avata_1.jpg" alt="Avatar">
+                    <h3>Tên người dùng 1</h3>
+                    <p>Mô tả ngắn về người dùng.</p>
+                    <button class="connect-button">Kết nối</button>
+                </div>
+                <!-- Thêm nhiều thẻ người dùng tương tự -->
+            </section>
+
+            <aside class="profile-info">
+                <img src="images/avata.jpg" alt="Avatar">
+                <h2>Tên người dùng</h2>
+                <p>Tiểu sử: Thông tin cá nhân của người dùng.</p>
+                <p>Tài liệu đã chia sẻ: 5</p>
+                <p>Số lượng kết nối: 10</p>
+                <button class="connect-button">Gửi yêu cầu kết nối</button>
+                <div class="rating">
+                    <span>⭐️⭐️⭐️⭐️⭐️</span> <!-- Đánh giá -->
+                </div>
+            </aside>
+            <div class="notification" id="notification" style="display: none;">
+                <h4>Thông báo kết nối</h4>
+                <p>Bạn có <strong>2 yêu cầu kết nối mới</strong>.</p>
+                <p><a href="#" style="color: #204b79; text-decoration: underline;">Xem chi tiết</a></p>
+            </div>
+            <div class="chat-window">
+                <input type="text" placeholder="Nhắn tin...">
+                <button class="send-message">Gửi</button>
+            </div>
+
+            <div class="group-list">
+                <h2>Nhóm Thảo Luận</h2>
+                <div class="group-card">
+                    <h3>Nhóm Công Nghệ</h3>
+                    <p>Thảo luận về các công nghệ mới nhất.</p>
+                    <span>10 thành viên</span>
+                </div>
+                <div class="group-card">
+                    <h3>Nhóm Nghệ Thuật</h3>
+                    <p>Chia sẻ và thảo luận về nghệ thuật.</p>
+                    <span>8 thành viên</span>
+                </div>
+                <!-- Thêm nhiều thẻ nhóm tương tự -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
